@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aplikasi Gaji Karyawan</title>
+    <link rel="stylesheet" href="gaji.css">
+</head>
+<body>
+    <h1>Aplikasi Hitung Gaji</h1>
+    <label for="namaKaryawan">Nama Karyawan:</label>
+    <input type="text" id="namaKaryawan"><br><br>
+
+    <label for="gajiPokok">Gaji Pokok Bulanan:</label>
+    <input type="number" id="gajiPokok"><br><br>
+
+    <button onclick="hitungGaji()">Hitung Gaji</button><br><br>
+
+    <p id="hasilGaji"></p>
+
+    <script>
+        function hitungGaji() {
+            // Mendapatkan input dari pengguna
+            var namaKaryawan = document.getElementById("namaKaryawan").value;
+            var gajiPokok = parseFloat(document.getElementById("gajiPokok").value);
+
+            // Menghitung tunjangan (20% dari gaji pokok)
+            var tunjangan = 0.2 * gajiPokok;
+
+            // Menghitung pajak (15% dari gaji pokok ditambah tunjangan)
+            var pajak = 0.15 * (gajiPokok + tunjangan);
+
+            // Menghitung gaji bersih
+            var gajiBersih = gajiPokok + tunjangan - pajak;
+
+            // Menampilkan hasil di elemen dengan id "hasilGaji"
+            document.getElementById("hasilGaji").innerHTML = "Nama Karyawan: " + namaKaryawan + "<br>Gaji Bersih: " + gajiBersih;
+        }
+    </script>
+</body>
+</html>
